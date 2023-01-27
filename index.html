@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game">
+<div id="character"></div>
+<div id="block"></div>
+    </div>
+    
+<script>
+var character = document.getElementById("character");
+var block = document.getElementById("block");
+
+var checkDead = setInterval(function(){
+    var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"))
+    var blockleft = parseInt(window.getComputedStyle(block).getPropertyValue("left"))
+    if(blockleft<20 && blockleft>0 && characterTop>=130){
+        block.style.animation ="none";
+        block.style.display="none";
+        alert("Game Over");
+    }
+},10);
+function jump(){
+    character.classList.add("animate");
+    setTimeout(function(){
+character.classList.remove("animate");},500)}
+
+    document.onkeydown = function(event) {
+        if(event.keyCode == 38){
+            jump();}};
+ 
+
+  </script>
+</body>
+</html>
+
+
